@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('id_control', function (Blueprint $table) {
             $table->string('tipo_entidad',10)->primary();
-            $table->integer('ultimo-valor');
+            $table->integer('ultimo_valor');
             $table->dateTime('created_at',$precision=3);
             $table->dateTime('updated_at',$precision=3);
         });
