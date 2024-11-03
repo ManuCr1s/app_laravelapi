@@ -25,14 +25,17 @@ class UserRequest extends FormRequest
             'dni.string'=>__('Ingrese cadena de texto'),
             'dni.size'=>__('Ingrese numero de Dni correcto'),
             'password.required'=>__('Ingrese Contraseña'),
-            'password.string'=>__('Ingrese contraseña para sistema')
+            'password.string'=>__('Ingrese contraseña para sistema'),
+            'id_rol.required'=>__('Ingrese rol'),
+            'id_rol.string'=>__('Ingrese caracter'),
         ];  
     }
     public function rules(): array
     {
         return [
             'dni'=>['required','string','size:8'],
-            'password'=>['required','string']
+            'id_rol'=>['required','string'],
+            'password'=>['required','string'],
         ];
     }
 }
