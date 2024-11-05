@@ -51,7 +51,7 @@ class UserController extends Controller
             'id_rol'=> $request->id_rol
         ]);
         $token = $user->createToken('auth_token')->plainTextToken;
-        return response()->json(['data'=>$user,'access_token'=>$token,'token_type'=>'Bearer']);
+        return response()->json(['data'=>$user->dni,'access_token'=>$token,'token_type'=>'Bearer']);
     }
 
     /**
@@ -68,10 +68,9 @@ class UserController extends Controller
         $user = User::where('dni',$request->dni)->firstOrFail();
         $token = $user->createToken('auth_token')->plainTextToken;
         return response()->json([
-            'message' => $user->name,
             'accessToken' => $token,
             'token_type' => 'Bearer',
-            'user' => $user
+            'data' => $user->dni
         ]);
     }
 
