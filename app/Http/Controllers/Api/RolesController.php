@@ -14,7 +14,7 @@ class RolesController extends Controller
      */
     public function index()
     {
-        $roles = Role::select('id_rol', 'nombre')->get();
+        $roles = Role::select('id_rol', 'nombre','descripcion')->get();
         return response()->json($roles);
     }
 
