@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Anexo;
+use App\Http\Requests\AnexoRequest;
 
 class AnexosController extends Controller
 {
@@ -28,9 +29,10 @@ class AnexosController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AnexoRequest $request)
     {
-        //
+        Anexo::create($request->validated());
+        return response()->json($request);
     }
 
     /**
@@ -52,16 +54,18 @@ class AnexosController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(AnexoRequest $request, Anexo $anexo)
     {
-        //
+        $anexo->update($request->all());
+        return response()->json(['Succes'=>['succes' => 'Se actualizo el registro satidactoriamente']]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Anexo $anexo)
     {
-        //
+        $anexo->delete();
+        return response()->json(['Succes'=>['succes' => 'Se elimino el registro satidactoriamente']]);
     }
 }

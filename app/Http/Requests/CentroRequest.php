@@ -4,7 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-class RoleRequest extends FormRequest
+
+class CentroRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,18 +23,17 @@ class RoleRequest extends FormRequest
     public function messages():array
     {
         return [
-            'nombre.required'=>__('Ingrese Rol'),
+            'nombre.required'=>__('Ingrese Centro Poblado'),
             'nombre.string'=>__('Ingrese un cadena de texto'),
-            'nombre.unique'=>__('El rol ya existe'),
-            'descripcion.required'=>__('Ingrese la descripcion'),
-            'descripcion.string'=>__('Ingrese un cadena de texto'),
+            'nombre.unique'=>__('El Centro Poblado ya existe'),
+            'id_districts.required'=>__('Ingrese Distrito'),
         ];
     }
     public function rules(): array
     {
         return [
-            'nombre'=>['required','string',Rule::unique(table: 'roles',column:'nombre')->ignore($this->role)],
-            'descripcion'=>['required','string'],
+            'nombre'=>['required','string',Rule::unique(table: 'centros_poblados',column:'nombre')->ignore($this->centro)],
+            'id_districts'=>['required'],
         ];
     }
 }

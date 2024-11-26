@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-class RoleRequest extends FormRequest
+class AnexoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,18 +22,17 @@ class RoleRequest extends FormRequest
     public function messages():array
     {
         return [
-            'nombre.required'=>__('Ingrese Rol'),
+            'nombre.required'=>__('Ingrese Caserio Anexo'),
             'nombre.string'=>__('Ingrese un cadena de texto'),
-            'nombre.unique'=>__('El rol ya existe'),
-            'descripcion.required'=>__('Ingrese la descripcion'),
-            'descripcion.string'=>__('Ingrese un cadena de texto'),
+            'nombre.unique'=>__('El Caserio ya existe'),
+            'id_centro_poblado.required'=>__('Ingrese Centro Poblado'),
         ];
     }
     public function rules(): array
     {
         return [
-            'nombre'=>['required','string',Rule::unique(table: 'roles',column:'nombre')->ignore($this->role)],
-            'descripcion'=>['required','string'],
+            'nombre'=>['required','string',Rule::unique(table: 'caserios_anexos',column:'nombre')->ignore($this->anexo)],
+            'id_centro_poblado'=>['required'],
         ];
     }
 }

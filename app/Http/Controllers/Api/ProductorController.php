@@ -4,18 +4,15 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Role;
-use App\Http\Requests\RoleRequest;
 
-class RolesController extends Controller
+class ProductorController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $roles = Role::select('id_rol', 'nombre','descripcion')->get();
-        return response()->json($roles);
+        //
     }
 
     /**
@@ -29,10 +26,9 @@ class RolesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(RoleRequest $request)
+    public function store(Request $request)
     {
-        Role::create($request->validated());
-        return response()->json($request);
+        //
     }
 
     /**
@@ -54,19 +50,16 @@ class RolesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(RoleRequest $request, Role $role)
+    public function update(Request $request, string $id)
     {
-        // return $request->all();
-        $role->update($request->all());
-        return response()->json(['Succes'=>['succes' => 'Se actualizo el registro satidactoriamente']]);
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Role $role)
+    public function destroy(string $id)
     {
-        $role->delete();
-        return response()->json(['Succes'=>['succes' => 'Se elimino satidactoriamente']]);
+        //
     }
 }

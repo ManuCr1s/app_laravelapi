@@ -15,6 +15,6 @@ class Centro extends Model
     protected $fillable = [
         'id_centro_poblado',
         'nombre',
-        'id_district',
+        'id_districts',
     ];
 }
