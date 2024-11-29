@@ -32,7 +32,8 @@ class RolesController extends Controller
     public function store(RoleRequest $request)
     {
         $role = Role::create($request->validated());
-        return response()->json($role);
+        $s = Role::where('nombre',$role->nombre)->first();
+        return response()->json($s);
     }
 
     /**

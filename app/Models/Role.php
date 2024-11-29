@@ -16,5 +16,6 @@ class Role extends Model
         'id_rol',
         'nombre',
         'descripcion',
+        'status',
     ];
 }
