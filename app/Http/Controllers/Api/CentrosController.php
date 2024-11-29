@@ -31,8 +31,9 @@ class CentrosController extends Controller
      */
     public function store(CentroRequest $request)
     {
-        Centro::create($request->validated());
-        return response()->json($request);
+        $centro = Centro::create($request->validated());
+        $s = Centro::where('nombre',$centro->nombre)->first();
+        return response()->json($s);
     }
 
     /**
